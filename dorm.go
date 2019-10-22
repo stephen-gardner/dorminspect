@@ -215,6 +215,13 @@ func (dorm *Dorm) getDuplicates(sendToSlack bool) string {
 		}
 		out += fmt.Sprintf("%s %s\n", ele, rooms)
 	}
+	if len(duplicates) == 0 {
+		ele := "(None)"
+		if sendToSlack {
+			ele = fmt.Sprintf(">_%s_", ele)
+		}
+		out += fmt.Sprintf("%s\n", ele)
+	}
 
 	return out
 }
